@@ -3,22 +3,24 @@ import classes from "./Cart.module.css";
 
 const Cart = (props) => {
   const cartItems = (
-    <ul>
+    <ul className={classes["cart-items"]}>
       {[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
         <li>{item.name}</li>
       ))}
     </ul>
   );
   return (
-    <Modal>
+    <Modal onClose={props.onClose}>
       {cartItems}
-      <div>
+      <div className={classes.total}>
         <span>Total Amount</span>
         <span>32.99$</span>
       </div>
-      <div>
-        <button>Close</button>
-        <button>Order</button>
+      <div className={classes.actions}>
+        <button className={classes["button-alt"]} onClick={props.onClose}>
+          Close
+        </button>
+        <button className={classes.button}>Order</button>
       </div>
     </Modal>
   );
